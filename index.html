@@ -1,0 +1,67 @@
+<style>
+    main {
+        list-style: none;
+         }
+
+        li {
+            font-size: small;
+            background-color: rgb(55, 149, 231);
+            padding: 5px;
+            margin: 10px;
+            color: aliceblue;
+          
+        } 
+
+        span {
+            background-color: rgb(243, 61, 219);
+            color: rgb(12, 12, 12);
+            padding: 5px;
+            margin: auto;
+            align-items: center;
+
+           
+          
+            
+            
+
+        }
+</style>
+
+
+
+<body>
+   <span align="center">Subjetct: API local and Online, Express and JS</span> 
+   <hr>
+<main></main>
+</body>
+
+
+<script>
+async function getContent(){
+    try {
+        const response = await fetch('http://localhost:4567')
+        const data = await response.json()
+         show(data)
+
+    } catch (error) {
+        //console.error(error)
+        console.log(error)
+    }
+   
+}
+getContent()
+
+function show(users){
+    let output = ''
+
+    for (let user of users) {
+        output += `
+        
+        <li>${user.id}) ${user.name}</li>`
+       
+    }
+
+    document.querySelector('main').innerHTML = output
+}
+
+</script>
